@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #FCFCFC;
+    
+}
+
+body {
+    color: #333333;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 100%;
+    height: 10vh;
+    padding: 16px;
+    border: 1px solid black;
+}
+
+main {
+    height: 90vh;
+}
+
+section {
+    border: 1px solid red;
+    height: 100%;
+}
