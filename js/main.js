@@ -1,55 +1,68 @@
+
 let duration = 1500;
+let timer = null;
 let isPlaying = false;
 
-const INITIAL_TIME_IN_SECS = 1500;
-const timerScreen = document.querySelector('#timer');
-let timer = null;
+const POMODORO_INTERVALS = {
+    session: { short: 1500, long: 2000 },
+    pause: { short: 300, long: 1200 }
+}
+
+const message = document.querySelector('#message');
+const pomodoroTimer = document.querySelector('#timer');
+const playButton = document.querySelector('.button');
+
+const PLAY_SYMBOL = "▶";
+const PAUSE_SYMBOL = "| |";
+const PLAY_MESSAGE = "EXECUTANDO";
+const PAUSE_MESSAGE = "PARADO";
 
 
 window.addEventListener('load', () => {
 
-    document.querySelector('.button').addEventListener('click', () => {
+    playButton.addEventListener('click', play);
 
-        if (isPlaying) {
-
-            isPlaying = false;
-            clearInterval(timer);
-
-        } else {
-
-            isPlaying = true;
-            timer = setInterval(start, 1000);
-        }
-
-    });
+    pomodoroTimer.textContent = formatTime(duration);
+    duration = POMODORO_INTERVALS.session.short;
 
 });
 
 
-let formatTime = (duration) => {
+function play() {
 
-    let minutes = Math.floor(duration / 60);
-    let seconds = duration % 60;
+    if (isPlaying) {
+        
+        isPlaying = false;
+        clearInterval(timer);
 
-    return `${minutes}:${seconds}`;
+        message.textContent = PAUSE_MESSAGE;
+        playButton.textContent = PLAY_SYMBOL;
+
+    } else {
+ 
+        isPlaying = true;
+        timer = setInterval(update, 1000);
+
+        message.textContent = PLAY_MESSAGE;
+        playButton.textContent = PAUSE_SYMBOL;     
+    }
 
 }
 
-let reset = () => {
-    let duration = INITIAL_TIME_IN_SEC;
-    timerScreen.textContent = formatTime(duration);
-}
-
-let start = () => {
+function update() {
 
     if (isPlaying && duration > 0) {
 
         duration--;
-        timerScreen.textContent = formatTime(duration);
-        // ⏸
-        
-    } else {
+        pomodoroTimer.textContent = formatTime(duration);
 
-        timerScreen.textContent = formatTime(duration); 
     }
+}
+
+function formatTime(duration) {
+
+    let minutes = Math.floor(duration / 60);
+    let seconds = duration % 60;
+    return minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+
 }
