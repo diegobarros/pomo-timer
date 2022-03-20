@@ -7,27 +7,90 @@
 
 html, body {
     height: 100%;
-    background-color: #FCFCFC;
-    
+    background-color: #FCFCFC;  
 }
 
 body {
-    color: #333333;
+    color: #FFFFFF;
+    background-color: #B10F40;
     font-family: 'Roboto', sans-serif;
 }
 
 nav {
     width: 100%;
     height: 10vh;
-    padding: 16px;
-    border: 1px solid black;
+    padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
 }
 
 main {
+    width: 100%;
     height: 90vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 section {
-    border: 1px solid red;
-    height: 100%;
+    padding: 64px;
+    height: auto;
+    width: 100%;
+    max-width: 960px;
+}
+
+.logo h1 {
+    font-family: 'Lobster', cursive;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+#pomodoro {
+
+}
+
+#timer {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 64px;
+    letter-spacing: 2px;
+}
+
+#pomodoro * {
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+#mensagem {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    
+}
+
+.button {
+    width: 56px;
+    height: 56px;
+    border: 3px solid #FFFFFF;
+    padding: 16px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 12px auto;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left:  auto;
+    max-width: 960px;
+    padding-right: 10px;
+    padding-left:  10px;
 }
